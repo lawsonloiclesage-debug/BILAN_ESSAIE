@@ -4,6 +4,7 @@ venv/
 
 # Environment variables & local config
 .env
+reminder.txt
 
 # Python cache files
 __pycache__/

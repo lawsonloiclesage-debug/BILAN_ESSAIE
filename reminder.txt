@@ -30,7 +30,7 @@ __pycache__/
 
 TO RUN GIT PROPERLY
     -Type git init : to initialize
-    -Type git add . to add 
+    -Type git add . : to add 
     -Type git status to check the status
-    -Type git commit -m : to commit 
+    -Type git commit -m "Initial setup with gitignore and requirements"   : to commit 
     DO IT EVERYTIME I NEED SAVE NEW FILES OR ACTIONS IN GIT
