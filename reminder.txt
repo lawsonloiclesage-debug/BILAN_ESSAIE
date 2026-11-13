@@ -1,0 +1,28 @@
+HERE ARE THE MAIN COMMANDS FOR VENV
+    - To create the venv: python -m venv venv     
+    - To run the venv: .\venv\Scripts\Activate.ps1 or venv\Scripts\activate.bat
+    - To create the requirements file that contains the module i'll have to download: pip freeze > requirements
+    - To install the modules inside the requirements: pip install -r requirements.txt  
+
+HERE ARE THE COMMANDS FOR THE DOCKER
+
+
+ALWAYS RECREATE A GITIGNORE IN THE ROOT FILE
+ALWAYS WRITE IN THIS GITIGNORE THE VENV/, THE ENV AND THE DATABASE
+FOR EXAMPLE: 
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables & local config
+.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Local SQLite database files (keeps your financial records private)
+*.db
+*.sqlite
+*.sqlite3

@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables & local config
+.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Local SQLite database files (keeps your financial records private)
+*.db
+*.sqlite
+*.sqlite3
