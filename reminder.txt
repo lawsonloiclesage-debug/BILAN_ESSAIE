@@ -10,7 +10,7 @@ HERE ARE THE COMMANDS FOR THE DOCKER
 ALWAYS RECREATE A GITIGNORE IN THE ROOT FILE
 ALWAYS WRITE IN THIS GITIGNORE THE VENV/, THE ENV AND THE DATABASE
 FOR EXAMPLE: 
-
+---------------------------------------------------------------------------
 # Virtual environment
 venv/
 .venv/
@@ -26,3 +26,11 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
+-----------------------------------------------------------------------------
+
+TO RUN GIT PROPERLY
+    -Type git init : to initialize
+    -Type git add . to add 
+    -Type git status to check the status
+    -Type git commit -m : to commit 
+    DO IT EVERYTIME I NEED SAVE NEW FILES OR ACTIONS IN GIT
