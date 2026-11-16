@@ -9,14 +9,21 @@ class Database:
 
         journal_table = ("""
         CREATE TABLE IF NOT EXISTS Journal(
-        id_account INTEGER PRIMARY KEY AUTOINCREMENT,
-        class_accont INTEGER NOT NULL check(class_account > 9),
+        id_account TEXT PRIMARY KEY,
+        class_account TEXT NOT NULL check,
         name_account TEXT NOT NULL,
         debit DECIMAL,
         credit DECIMAL)
         """)
         self.cursor.execute(journal_table)
         self.conn.commit()
-        
 
-        
+
+    def insert(self, id_account: str, class_account: str, name_acount: str, debit: float, credit: float ):
+        self.cursor.execute("""INSERT INTO journal_table (id_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
+                             (id_account, class_account, name_acount, debit, credit))
+
+    
+
+
+

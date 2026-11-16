@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import sqlite3 as sq
+import data as dt
 
 class Metier:
     class Account(ABC):
@@ -8,6 +8,7 @@ class Metier:
             self.class_account = class_account
             self.account_number = account_number
             self.montant = montant
+            self.connect = dt.Database()
 
         @abstractmethod
         def set_debit(self, montant: float) -> float:
