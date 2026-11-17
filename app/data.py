@@ -4,6 +4,7 @@ class Database:
     def __init__(self, name="data.db"):
         self.conn = sq.connect(name)
         self.cursor = self.conn.cursor()
+        self.data_rows = self.cursor.fetchall()
 
         # Creation de la table journal
 
@@ -19,11 +20,13 @@ class Database:
         self.conn.commit()
 
 
-    def insert(self, id_account: str, class_account: str, name_acount: str, debit: float, credit: float ):
+    def insert(self, id_account: str, class_account: str, name_account: str, debit: float, credit: float ):
         self.cursor.execute("""INSERT INTO journal_table (id_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
-                             (id_account, class_account, name_acount, debit, credit))
+                             (id_account, class_account, name_account, debit, credit))
 
     
+    def fetch_data(self):
+        return self.data_rows 
 
 
 
