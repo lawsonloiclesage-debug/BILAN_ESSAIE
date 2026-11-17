@@ -11,18 +11,19 @@ class Database:
         journal_table = ("""
         CREATE TABLE IF NOT EXISTS Journal(
         id_account TEXT PRIMARY KEY,
-        class_account TEXT NOT NULL check,
+        class_account TEXT NOT NULL,
         name_account TEXT NOT NULL,
-        debit DECIMAL,
-        credit DECIMAL)
+        debit FLOAT NOT NULL,
+        credit FLOAT NOT NULL)
         """)
         self.cursor.execute(journal_table)
         self.conn.commit()
 
 
     def insert(self, id_account: str, class_account: str, name_account: str, debit: float, credit: float ):
-        self.cursor.execute("""INSERT INTO journal_table (id_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
+        self.cursor.execute("""INSERT INTO Journal (id_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
                              (id_account, class_account, name_account, debit, credit))
+        self.conn.commit()
 
     
     def fetch_data(self):
