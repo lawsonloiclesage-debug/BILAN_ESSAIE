@@ -8,30 +8,26 @@ class Account(ABC):
         self.id_account = id_account
         self.class_account = class_account
         self.name_account = name_account
-        self.debit = debit
-        self.credit = credit
+        self._debit = debit
+        self._credit = credit
 
         #definition des composants externes de la base de donnees
         self.connect = dt.Database()
             
-
-    @abstractmethod
     @property
+    @abstractmethod
     def debit(self) -> float:
             ...
-
-    @abstractmethod
     @debit.setter
+    @abstractmethod
     def debit(self, montant: float):
             ...
-
-    @abstractmethod
     @property
+    @abstractmethod
     def credit(self) -> float:
             ...     
-
-    @abstractmethod
     @credit.setter
+    @abstractmethod
     def credit(self, montant: float):
             ...
 
@@ -46,26 +42,26 @@ class Accounts:
 
         @property
         def debit(self) -> float :
-            return self.debit
+            return self._debit
         
         @debit.setter
         def debit(self, debit: float):
-            self.debit += debit        
+            self._debit += debit        
 
         @property
         def credit(self) -> float:
-            return self.credit
+            return self._credit
         
 
         @credit.setter
         def credit(self, credit: float):
-            self.credit += credit
+            self._credit += credit
 
-        def get_solde(self):
-            checking = self.get_debit > self.get_credit
+        def solde(self):
+            checking = self._debit > self._credit
             if checking:
-                return self.get_debit - self.get_credit
-            return self.get_credit - self.get_debit
+                return self.get_debit - self._credit
+            return self._credit - self._debit
 
         
     class Liabilities(Account):
@@ -74,26 +70,26 @@ class Accounts:
 
         @property
         def debit(self) -> float:
-            return self.debit
+            return self._debit
                 
         @debit.setter
         def debit(self, debit: float):
-            self.debit += debit
+            self._debit += debit
                 
         
         @property
         def credit(self) -> float:
-            return self.credit
+            return self._credit
         
         @credit.setter
         def credit(self, credit: float):
-            self.montant_credit += credit
+            self._credit += credit
 
-        def get_solde(self):
-            checking = self.get_debit > self.get_credit
+        def solde(self):
+            checking = self._debit > self._credit
             if checking:
-                return self.get_debit - self.get_credit
-            return self.get_credit - self.get_debit
+                return self._debit - self._credit
+            return self._credit - self._debit
 
 
     class Charge(Account):
@@ -102,26 +98,26 @@ class Accounts:
         
         @property
         def debit(self) -> float:
-            return self.debit
+            return self._debit
         
         @debit.setter
         def debit(self, debit: float):
-            self.debit += debit
+            self._debit += debit
         
 
         @property
         def credit(self) -> float:
-            return self.credit
+            return self._credit
 
         @credit.setter
         def credit(self, credit: float):
-            self.credit += credit      
+            self._credit += credit      
         
-        def get_solde(self):
-            checking = self.get_debit > self.get_credit
+        def solde(self):
+            checking = self._debit > self._credit
             if checking:
-                return self.get_debit - self.get_credit
-            return self.get_credit - self.get_debit
+                return self._debit - self._credit
+            return self._credit - self._debit
 
     class Product(Account):
         def __init__(self, designation, account_number, montant):
@@ -129,29 +125,29 @@ class Accounts:
         
         @property
         def debit(self) -> float:
-            return self.debit
+            return self._debit
         
         @debit.setter
         def debit(self, debit: float):
-            self.debit += debit        
+            self._debit += debit        
 
         @property
         def credit(self) -> float:
-            return self.credit
+            return self._credit
 
         @credit.setter
-        def set_credit(self, credit: float):
-            self.credit += credit
+        def credit(self, credit: float):
+            self._credit += credit
 
-        def get_solde(self):
-            checking = self.get_debit > self.get_credit
+        def solde(self):
+            checking = self._debit > self._credit
             if checking:
-                return self.get_debit - self.get_credit
-            return self.get_credit - self.get_debit
+                return self._debit - self._credit
+            return self._credit - self._debit
 
 
 compte1 = Accounts.Assets("512","5","Banque",0,0)
-compte1.set_credit(3000)
+compte1._credit(300.0)
 print(compte1.name_account)
 
 class FinancielStatements:

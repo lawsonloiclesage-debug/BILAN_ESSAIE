@@ -1,0 +1,52 @@
+HERE ARE THE MAIN COMMANDS FOR VENV
+    - To create the venv: python -m venv venv     
+    - To run the venv: .\venv\Scripts\Activate.ps1 or venv\Scripts\activate.bat
+    - To create the requirements file that contains the module i'll have to download: pip freeze > requirements
+    - To install the modules inside the requirements: pip install -r requirements.txt  
+
+HERE ARE THE COMMANDS FOR THE DOCKER
+
+
+ALWAYS RECREATE A GITIGNORE IN THE ROOT FILE
+ALWAYS WRITE IN THIS GITIGNORE THE VENV/, THE ENV AND THE DATABASE
+FOR EXAMPLE: 
+---------------------------------------------------------------------------
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables & local config
+.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Local SQLite database files (keeps your financial records private)
+*.db
+*.sqlite
+*.sqlite3
+-----------------------------------------------------------------------------
+TO RUN GIT PROPERLY ON LOCAL
+    -Type git init : to initialize
+    -Type git add . : to add 
+    -Type git status to check the status
+    -Type git commit -m "Initial setup with gitignore and requirements"   : to commit 
+    DO IT EVERYTIME I NEED SAVE NEW FILES OR ACTIONS IN GIT
+
+----------------------------------------------------------------------------------
+
+TO RUN GIT PROPERLY ON GITHUB (no file empty)
+    - Create a new repository on GitHub, copy the url
+    - Connect your local folder to GitHub: git remote add origin https://github.com/yourusername/BILAN_ESSAIE.git
+    - Verification run:  git remote -v in PowerShell—your GitHub URL will appear next to origin (fetch) and origin (push).
+    - Rename your branch to main and push your code: git branch -M main,
+                                                    git push -u origin main
+    After installation if i want to add on github:
+        -I'll need to save it locally
+        -And push
+
+TO REMOVE A FILE ONLINE AND PUT IT IN GITIGNORE
+    - git rm --cached reminder.txt 
+    - git commit -m "remove reminder.txt from github"
+    - git push       
