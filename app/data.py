@@ -30,11 +30,21 @@ class Database:
         return self.data_rows 
 
 
-    def total_credit(self, id_account):
-        self.cursor.execute("SELECT SUM(debit) WHERE id_account = (?)", (id_account,))
+    def total_credit_unique(self, id_account):
+       return self.cursor.execute("SELECT SUM(debit) WHERE id_account = (?)", (id_account,))
 
-    def total_credit(self, id_account):
-        self.cursor.execute("SELECT SUM(credit) WHERE id_account = (?)", (id_account,))
+    def total_credit_unique(self, id_account):
+        return self.cursor.execute("SELECT SUM(credit) WHERE id_account = (?)", (id_account,))
+
+    def total_debit_total(self):
+        return self.cursor.execute("SELECT SUM(debit)")
+
+    def total_credit_total(self):
+        return self.cursor.execute("SELECT SUM(credit)")
+    
+    
+    
+
         
 
 
