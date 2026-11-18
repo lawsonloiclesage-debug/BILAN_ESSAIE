@@ -30,4 +30,12 @@ class Database:
         return self.data_rows 
 
 
+    def total_credit(self, id_account):
+        self.cursor.execute("SELECT SUM(debit) WHERE id_account = (?)", (id_account,))
+
+    def total_credit(self, id_account):
+        self.cursor.execute("SELECT SUM(credit) WHERE id_account = (?)", (id_account,))
+        
+
+
 

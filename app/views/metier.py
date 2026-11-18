@@ -67,8 +67,8 @@ class Accounts:
 
         
     class Liabilities(Account):
-        def __init__(self, designation, account_number, montant):
-            super().__init__(designation, account_number, montant)
+        def __init__(self, id_account: str, class_account: str, name_account: str, debit: float, credit: float):
+            super().__init__(id_account, class_account, name_account, debit, credit)
 
         @property
         def debit(self) -> float:
@@ -92,10 +92,12 @@ class Accounts:
                 return self._debit - self._credit
             return self._credit - self._debit
 
-
+        def insert(self):
+            self.connect.insert(self.id_account, self.class_account, self.name_account, self.debit, self.credit)
+        
     class Charge(Account):
-        def __init__(self, designation, account_number, montant):
-                super().__init__(designation, account_number, montant)
+        def __init__(self, id_account: str, class_account: str, name_account: str, debit: float, credit: float):
+                super().__init__(id_account, class_account, name_account, debit, credit)
         
         @property
         def debit(self) -> float:
@@ -105,7 +107,6 @@ class Accounts:
         def debit(self, debit: float):
             self._debit += debit
         
-
         @property
         def credit(self) -> float:
             return self._credit
@@ -119,10 +120,14 @@ class Accounts:
             if checking:
                 return self._debit - self._credit
             return self._credit - self._debit
+        
+        def insert(self):
+            self.connect.insert(self.id_account, self.class_account, self.name_account, self.debit, self.credit)
+        
 
     class Product(Account):
-        def __init__(self, designation, account_number, montant):
-                super().__init__(designation, account_number, montant)
+        def __init__(self, id_account: str, class_account: str, name_account: str, debit: float, credit: float):
+                super().__init__(id_account, class_account, name_account, debit, credit)
         
         @property
         def debit(self) -> float:
@@ -146,13 +151,20 @@ class Accounts:
                 return self._debit - self._credit
             return self._credit - self._debit
 
+        def insert(self):
+            self.connect.insert(self.id_account, self.class_account, self.name_account, self.debit, self.credit)
+
+     
 
 
-
-
-
-class FinancielStatements:
+class FinancialStatements:
     ...
+    class Journal:
+         ...
+
+
+while True:
+     cmpte = Accounts.Charge()
 
 
 
