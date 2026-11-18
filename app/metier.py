@@ -38,7 +38,7 @@ class Account(ABC):
 class Accounts:
     class Assets(Account):
         def __init__(self,id_account: str, class_account: str, name_account: str, debit: float, credit: float ):
-            super().__init__(id_account, class_account,name_account, debit, credit )
+            super().__init__(id_account, class_account, name_account, debit, credit )
 
         @property
         def debit(self) -> float :
@@ -46,13 +46,12 @@ class Accounts:
         
         @debit.setter
         def debit(self, debit: float):
-            self._debit += debit        
+            self._debit += debit   
 
         @property
         def credit(self) -> float:
             return self._credit
         
-
         @credit.setter
         def credit(self, credit: float):
             self._credit += credit
@@ -62,6 +61,9 @@ class Accounts:
             if checking:
                 return self.get_debit - self._credit
             return self._credit - self._debit
+        
+        def insert(self):
+            self.connect.insert(self.id_account, self.class_account, self.name_account, self.debit, self.credit)
 
         
     class Liabilities(Account):
@@ -74,8 +76,7 @@ class Accounts:
                 
         @debit.setter
         def debit(self, debit: float):
-            self._debit += debit
-                
+            self._debit += debit                
         
         @property
         def credit(self) -> float:
@@ -146,9 +147,9 @@ class Accounts:
             return self._credit - self._debit
 
 
-compte1 = Accounts.Assets("512","5","Banque",0,0)
-compte1._credit(300.0)
-print(compte1.name_account)
+
+
+
 
 class FinancielStatements:
     ...
