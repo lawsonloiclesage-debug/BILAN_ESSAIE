@@ -2,14 +2,14 @@ import data as dt
 import metier as mt
 
 class Operations:
-    def __init__(self):
-        ...        
+    def __init__(self, metier: mt):
+        self.log = metier
 
-    def total_debit_unique(self, id_account: str) -> float:
-        return dt.Database.total_debit(id_account)
+    def total_debit_unique(self, name_account: str) -> float:
+        return dt.Database.total_debit(name_account)
 
-    def total_credit_unique(self, id_account: str) -> float:
-        return dt.Database.total_credit(id_account)
+    def total_credit_unique(self, name_account: str) -> float:
+        return dt.Database.total_credit(name_account)
         
     def solde_unique(self) -> float:
         is_solde = self.total_debit_unique > self.total_credit_unique
@@ -35,6 +35,10 @@ class Operations:
 
 
         
-    
+cmpte = mt.Accounts.Assets("512", "5","Banque",0,0)
+cmpte.debit = 400
+cmpte.credit = 300
+
+print()
 
     
