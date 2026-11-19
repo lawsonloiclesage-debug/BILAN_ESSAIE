@@ -157,12 +157,13 @@ class Accounts:
         def insert(self):
             self.connect.insert(self.id_account, self.number_account, self.class_account, self.name_account, self.debit, self.credit)
 
-
-cmpte = Accounts.Assets(None,"512", "5","Banque",0,0)
-cmpte.debit = 900
-cmpte.credit = 200
-cmpte.insert()  
-
+"""
+cmpte = Accounts.Assets(None,"53", "5","Caisse",0,0)
+cmpte.debit = 1300
+cmpte.credit = 400
+cmpte.insert()
+  
+"""
 
 class FinancialStatements:
     ...

@@ -13,13 +13,13 @@ class Operations:
         return self.db.total_debit_unique(name_account)
 
     def total_credit_unique(self,name_account: str) -> float:
-        return self.dd.Database.total_credit_unique(name_account)
+        return self.db.total_credit_unique(name_account)
         
     def solde_unique(self, name_account) -> float:
         is_solde = self.total_debit_unique(name_account) > self.total_credit_unique(name_account)
         if is_solde:
-            return self.total_debit_unique - self.total_credit_unique
-        return self.total_credit_unique - self.total_debit_unique
+            return self.total_debit_unique(name_account) - self.total_credit_unique(name_account)
+        return self.total_credit_unique(name_account) - self.total_debit_unique(name_account)
     
     def total_debit_total(self) -> float:
         return self.db.total_debit_total()
@@ -36,4 +36,4 @@ class Operations:
 
 
 cmpte = Operations()
-print(cmpte.total_debit_total()[0])
+print(cmpte.total_credit_unique("Caisse"))

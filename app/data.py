@@ -36,27 +36,27 @@ class Database:
 
     # selection de la somme du debit d'un compte en fonction de son nom
     def total_debit_unique(self, number_account):       
-        self.cursor.execute("SELECT SUM(debit) FROM Journal WHERE number_account = (?)", (number_account,))
+        self.cursor.execute("SELECT SUM(debit) FROM Journal WHERE name_account = (?)", (number_account,))
         result = self.cursor.fetchall()
-        return result
+        return result[0][0]
 
     # selection de la somme du credit d'un compte en fonction de son nom
     def total_credit_unique(self, number_account):
-        self.cursor.execute("SELECT SUM(credit) FROM Journal WHERE number_account = (?)", (number_account,))
+        self.cursor.execute("SELECT SUM(credit) FROM Journal WHERE name_account = (?)", (number_account,))
         result = self.cursor.fetchall()
-        return result
+        return result[0][0]
 
     # selection de la somme du debit total
     def total_debit_total(self):
         self.cursor.execute("SELECT SUM(debit) FROM Journal")
         result = self.cursor.fetchall()
-        return result
+        return result[0][0]
 
     # selection de la somme du credit total
     def total_credit_total(self):
         self.cursor.execute("SELECT SUM(credit) FROM Journal")
         result = self.cursor.fetchall()
-        return result
+        return result[0][0]
     
     
     
