@@ -35,17 +35,17 @@ class Database:
         return self.data_rows 
 
 
-    def total_credit_unique(self, number_account):
-       return self.cursor.execute("SELECT SUM(debit) WHERE number_account = (?)", (number_account,))
+    def total_debit_unique(self, number_account):
+       return self.cursor.execute("SELECT SUM(debit) FROM Journal WHERE number_account = (?)", (number_account,))
 
     def total_credit_unique(self, number_account):
-        return self.cursor.execute("SELECT SUM(credit) WHERE number_account = (?)", (number_account,))
+        return self.cursor.execute("SELECT SUM(credit) FROM Journal WHERE number_account = (?)", (number_account,))
 
     def total_debit_total(self):
-        return self.cursor.execute("SELECT SUM(debit)")
+        return self.cursor.execute("SELECT SUM(debit) FROM Journal")
 
     def total_credit_total(self):
-        return self.cursor.execute("SELECT SUM(credit)")
+        return self.cursor.execute("SELECT SUM(credit) FROM Journal")
     
     
     

@@ -157,9 +157,9 @@ class Accounts:
             self.connect.insert(self.id_account, self.number_account, self.class_account, self.name_account, self.debit, self.credit)
 
 
-cmpte = Accounts.Assets(None, "512", "5","Banque",0,0)
-cmpte.debit = 400
-cmpte.credit = 300
+cmpte = Accounts.Assets(None,"512", "5","Banque",0,0)
+cmpte.debit = 900
+cmpte.credit = 200
 cmpte.insert()  
 
 
