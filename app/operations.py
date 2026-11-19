@@ -1,6 +1,9 @@
 import data as dt
 import metier as mt
 
+
+# Classe qui permet d'effectuer les operations de recuperer les debits et credits de de la base de donnee
+# et de definir les soldes
 class Operations:
 
     def __init__(self):

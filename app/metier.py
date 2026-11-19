@@ -37,6 +37,7 @@ class Account(ABC):
     def solde(self) -> float:
             ...
 
+#classe englobante des autres classes des comptes
 class Accounts:
     class Assets(Account):
         def __init__(self, id_account: int = None, number_account: str = None, class_account: str = None, name_account: str = None, debit: float = 0.0, credit: float = 0.0 ):
