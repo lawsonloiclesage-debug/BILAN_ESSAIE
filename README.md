@@ -9,3 +9,5 @@ Il ne contiendra que la base de donnes et ses tables
 -MAIN: qui contiendra l'interface utilisateur le tkinter ou customtkinter. Il servira a de point de convergence du fichier metier et du fichier data
 
 -METIER: contient les instructions et les differents calculs et regles de comptabilite. Il se servira des donnees du fichier DATA, afin de determiner les operations et faire les calcues et verifications necessaires quand il s'agira de la partie double. Il est des lors le cerveau de l'application, et jouera le role de
+
+-OPERATIONS: qui va se charger de travailler sur les operations de claculs du solde, et des debits, credit

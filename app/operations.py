@@ -5,7 +5,8 @@ import metier as mt
 # et de definir les soldes
 class Operations:
 
-    def __init__(self):
+    def __init__(self,metier: mt):
+        self.checking = metier.Accounts
         self.db = dt.Database()
     
     def total_debit_unique(self,name_account: str) -> float:
@@ -27,12 +28,22 @@ class Operations:
         return self.db.total_credit_total()
 
     def solde_total(self) -> float:
-        is_solde = self.total_debit_total > self.total_credit_total
+        is_solde = self.total_debit_total() > self.total_credit_total()
         if is_solde:
-            return self.total_debit_total - self.total_credit_total
-        return self.total_credit_total - self.total_debit_unique
+            return self.total_debit_total() - self.total_credit_total()
+        return self.total_credit_total() - self.total_debit_unique()
+    
+
+    def double_partie(self):
+        if self.checking.Assets.debit == self.checking.Liabilities.credit:
+            return "Good"
+        return "Bad"
+
+
+
+
 
 
 
 cmpte = Operations()
-print(cmpte.total_credit_unique("Caisse"))
+print(cmpte.total_credit_unique(""))
