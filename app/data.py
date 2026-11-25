@@ -9,7 +9,7 @@ class Database:
         # Creation de la table journal
         journal_table = ("""
         CREATE TABLE IF NOT EXISTS Journal(
-        id_account INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_transact INTEGER PRIMARY KEY AUTOINCREMENT,
         number_account TEXT NOT NULL,
         class_account TEXT NOT NULL,
         name_account TEXT NOT NULL,
@@ -21,40 +21,38 @@ class Database:
 
 
     # insertion des donnees dans la table
-    def insert(self, id_account: int = None, number_account: str = None, class_account: str = None, name_account: str = None, debit: float = 0.0, credit: float = 0.0 ):
-        if id_account is not None:
-            self.cursor.execute("""INSERT INTO Journal (id_account, number_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?,?)""",
-                                 (id_account, number_account, class_account, name_account, debit, credit))
-        else:
-            self.cursor.execute("""INSERT INTO Journal (number_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
-                                 (number_account, class_account, name_account, debit, credit))
+    def insert(self, number_account: str, class_account: str, name_account: str, debit: float, credit: float, id_transact: int = None):
+        self.cursor.execute(
+            """INSERT INTO Journal (number_account, class_account, name_account, debit, credit) VALUES(?,?,?,?,?)""",
+            (number_account, class_account, name_account, debit, credit)
+        )
         self.conn.commit()
 
-    # fonction sur lesquelles je dois reflechir 
     def fetch_data(self):
-        return self.data_rows 
+        self.cursor.execute("SELECT * FROM Journal")
+        return self.cursor.fetchall() 
 
     # selection de la somme du debit d'un compte en fonction de son nom
     def total_debit_unique(self, number_account):       
-        self.cursor.execute("SELECT SUM(debit) FROM Journal WHERE name_account = (?)", (number_account,))
+        self.cursor.execute("SELECT TOTAL(debit) FROM Journal WHERE number_account = (?)", (number_account,))
         result = self.cursor.fetchall()
         return result[0][0]
 
     # selection de la somme du credit d'un compte en fonction de son nom
     def total_credit_unique(self, number_account):
-        self.cursor.execute("SELECT SUM(credit) FROM Journal WHERE name_account = (?)", (number_account,))
+        self.cursor.execute("SELECT TOTAL(credit) FROM Journal WHERE number_account = (?)", (number_account,))
         result = self.cursor.fetchall()
         return result[0][0]
 
     # selection de la somme du debit total
     def total_debit_total(self):
-        self.cursor.execute("SELECT SUM(debit) FROM Journal")
+        self.cursor.execute("SELECT TOTAL(debit) FROM Journal")
         result = self.cursor.fetchall()
         return result[0][0]
 
     # selection de la somme du credit total
     def total_credit_total(self):
-        self.cursor.execute("SELECT SUM(credit) FROM Journal")
+        self.cursor.execute("SELECT TOTAL(credit) FROM Journal")
         result = self.cursor.fetchall()
         return result[0][0]
     
