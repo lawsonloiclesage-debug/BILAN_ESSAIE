@@ -5,8 +5,7 @@ import metier as mt
 # et de definir les soldes
 class Operations:
 
-    def __init__(self,metier: mt):
-        self.checking = metier.Accounts
+    def __init__(self):
         self.db = dt.Database()
     
     def total_debit_unique(self,name_account: str) -> float:
@@ -31,19 +30,32 @@ class Operations:
         is_solde = self.total_debit_total() > self.total_credit_total()
         if is_solde:
             return self.total_debit_total() - self.total_credit_total()
-        return self.total_credit_total() - self.total_debit_unique()
+        return self.total_credit_total() - self.total_debit_total()
     
 
-    def double_partie(self):
-        if self.checking.Assets.debit == self.checking.Liabilities.credit:
+    def double_partie(self, assets: mt.Assets, liabilities: mt.Liabilities):
+        if assets.debit == liabilities.credit:
             return "Good"
         return "Bad"
 
+    def check_solde():
+        ...
 
 
 
 
+"""
+def main():
+    while True:
+        infos_set = {}
+        try:
+            ask = int(input("Combien de comptes voulezz vous enregistrer: "))
+            for account in range(1,ask+1):
+                account_name = ask("Taper le libelle du compte: ")
+                account
 
+                
 
-cmpte = Operations()
-print(cmpte.total_credit_unique(""))
+# cmpte = Operations()
+# print(cmpte.total_credit_unique(""))
+"""
