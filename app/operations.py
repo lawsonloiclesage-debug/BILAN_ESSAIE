@@ -49,7 +49,26 @@ class OperationsBilan:
 class OperationResultat:
     ...
 
-"""
+def operation_choice():
+    while True:
+        try:
+            ask = input("""    
+            Que voulez vous faire de ce compte:?
+            ------------------------
+            1-crediter
+            2-debiter
+            ------------------------    
+            """)
+            if str(ask) != "1" and str(ask) != "2":
+            
+            
+
+    
+
+
+
+
+
 def main():
     while True:
         infos_set = {}
@@ -57,14 +76,16 @@ def main():
             ask = int(input("Combien de comptes voulezz vous enregistrer: "))
             for account in range(1,ask+1):
                 account_name = ask("Taper le libelle du compte: ")
-                account
+
+
+        except:
 
                 
-"""
 
 
-cmpte = OperationsBilan()
-print("Total debit:", cmpte.total_debit_unique("53"))
-print("Total credit:", cmpte.total_credit_unique("53"))
-print("Solde:", cmpte.solde_unique("53"))
-print(cmpte.solde_unique("53"))
+if __name__ == "__main__":
+    cmpte = OperationsBilan()
+    print("Total debit:", cmpte.total_debit_unique("53"))
+    print("Total credit:", cmpte.total_credit_unique("53"))
+    print("Solde:", cmpte.solde_unique("53"))
+    print(cmpte.solde_unique("53"))
