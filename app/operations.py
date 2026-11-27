@@ -1,12 +1,14 @@
 import data as dt
 import metier as mt
 
+
 # Classe qui permet d'effectuer les operations de recuperer les debits et credits de de la base de donnee
 # et de definir les soldes
 class OperationsBilan:
 
     def __init__(self):
         self.db = dt.Database()
+
     
     def total_debit_unique(self,number_account: str) -> float:
         return self.db.total_debit_unique(number_account)
@@ -46,41 +48,21 @@ class OperationsBilan:
         return self.total_debit_total() == self.total_credit_total()
 
 
-class OperationResultat:
-    ...
+from dataclasses import dataclass
 
-def operation_choice():
-    while True:
-        try:
-            ask = input("""    
-            Que voulez vous faire de ce compte:?
-            ------------------------
-            1-crediter
-            2-debiter
-            ------------------------    
-            """)
-            if str(ask) != "1" and str(ask) != "2":
-            
-            
+@dataclass
+class Journal:
+    nom_facture: str
+    date_facture: str
+    compte: mt
 
+    def choix_operation():
+        liste = []
+
+   
+    
     
 
-
-
-
-
-def main():
-    while True:
-        infos_set = {}
-        try:
-            ask = int(input("Combien de comptes voulezz vous enregistrer: "))
-            for account in range(1,ask+1):
-                account_name = ask("Taper le libelle du compte: ")
-
-
-        except:
-
-                
 
 
 if __name__ == "__main__":
